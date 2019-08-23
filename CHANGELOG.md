@@ -6,6 +6,10 @@ All notable changes to [create-bpmnlint-plugin](https://github.com/nikku/create-
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.0.2
+
+* `FIX`: scaffold hidden files, too
+
 ## 0.0.1
 
 _Initial release._
