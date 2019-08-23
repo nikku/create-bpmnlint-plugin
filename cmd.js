@@ -50,7 +50,7 @@ async function run() {
     const srcPath = path.join(boilerplatePath, file);
     const destPath = path.join(pluginPath, file);
 
-    console.log('Copying', destPath);
+    console.log('Creating', destPath);
 
     const destDirectory = path.dirname(destPath);
 
