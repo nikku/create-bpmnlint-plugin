@@ -35,7 +35,8 @@ async function run() {
 
   const files = await glob('**/*', {
     cwd: boilerplatePath,
-    filesOnly: true
+    filesOnly: true,
+    dot: true
   });
 
   const replaceFiles = [
@@ -48,7 +49,10 @@ async function run() {
   for (const file of files) {
 
     const srcPath = path.join(boilerplatePath, file);
-    const destPath = path.join(pluginPath, file);
+
+    const destFile = file.endsWith('.tpl') ? file.substring(0, file.length - '.tpl'.length) : file;
+
+    const destPath = path.join(pluginPath, destFile);
 
     console.log('Creating', destPath);
 
