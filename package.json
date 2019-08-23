@@ -1,0 +1,23 @@
+{
+  "name": "create-bpmnlint-plugin",
+  "version": "0.0.0",
+  "description": "The bpmnlint plug-in scaffolding utility",
+  "bin": "./cmd.js",
+  "scripts": {
+    "test": "echo \"no tests\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikku/create-bpmnlint-plugin.git"
+  },
+  "keywords": [
+    "bpmnlint",
+    "generator"
+  ],
+  "author": "Nico Rehwaldt",
+  "license": "MIT",
+  "dependencies": {
+    "mri": "^1.1.4",
+    "tiny-glob": "^0.2.6"
+  }
+}
