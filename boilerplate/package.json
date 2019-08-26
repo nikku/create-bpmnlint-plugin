@@ -1,7 +1,7 @@
 {
-  "name": "bpmnlint-plugin-${PLUGIN_NAME}",
+  "name": "bpmnlint-plugin-${NAME}",
   "version": "0.0.0",
-  "description": "The bpmnlint ${PLUGIN_NAME} plug-in",
+  "description": "The bpmnlint ${NAME} plug-in",
   "main": "index.js",
   "scripts": {
     "all": "npm test",

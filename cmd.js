@@ -12,7 +12,7 @@ const path = require('path');
 const pkg = require('./package');
 
 const config = {
-  directoryTemplate: 'bpmnlint-plugin-${PLUGIN_NAME}',
+  directoryTemplate: 'bpmnlint-plugin-${NAME}',
   runCommand: 'npm test'
 };
 
@@ -39,9 +39,9 @@ async function run(config) {
 
   const cwd = args._[1] || process.cwd();
 
-  const pluginName = args._[0];
+  const targetName = args._[0];
 
-  if (!pluginName) {
+  if (!targetName) {
     console.error('No name specified');
     process.exit(1);
   }
@@ -49,7 +49,7 @@ async function run(config) {
   const targetPath = path.join(cwd, replaceTemplates(directoryTemplate));
 
   function replaceTemplates(str) {
-    return str.replace(/\$\{PLUGIN_NAME\}/g, pluginName);
+    return str.replace(/\$\{NAME\}/g, targetName);
   }
 
   console.log(`Setting up in ${ bold(targetPath) }`);
