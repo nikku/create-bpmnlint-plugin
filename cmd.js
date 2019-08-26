@@ -20,13 +20,33 @@ const config = {
   ]
 };
 
+function createReplacer(fns) {
+  return (str) => {
+    return fns.reduce((str, fn) => {
+      if (!fn) {
+        return str;
+      }
+
+      return fn(str);
+    }, str);
+  };
+}
+
 async function run(config) {
 
   const {
     directoryTemplate,
     runCommand,
-    templateFiles
+    templateFiles,
+    replaceAdditional
   } = config;
+
+  const replaceTemplates = createReplacer([
+    replaceAdditional,
+    (str) => {
+      return str.replace(/\$\{NAME\}/g, targetName);
+    }
+  ]);
 
   const args = mri(process.argv.slice(2));
 
@@ -52,10 +72,6 @@ async function run(config) {
   }
 
   const targetPath = path.join(cwd, replaceTemplates(directoryTemplate));
-
-  function replaceTemplates(str) {
-    return str.replace(/\$\{NAME\}/g, targetName);
-  }
 
   console.log(`Setting up in ${ bold(targetPath) }`);
   console.log();
