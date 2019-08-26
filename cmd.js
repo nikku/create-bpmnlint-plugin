@@ -57,7 +57,7 @@ async function run() {
     'package.json'
   ];
 
-  console.log(`Setting up your plug-in in ${ bold(pluginPath) }`);
+  console.log(`Setting up in ${ bold(pluginPath) }`);
   console.log();
 
   for (const file of files) {
