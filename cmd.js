@@ -62,7 +62,7 @@ async function run(config) {
     process.exit(0);
   }
 
-  const cwd = args._[1] || process.cwd();
+  const cwd = args._[1] || '.';
 
   const targetName = args._[0];
 
