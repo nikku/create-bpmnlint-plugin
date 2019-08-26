@@ -17,6 +17,7 @@
   "author": "Nico Rehwaldt",
   "license": "MIT",
   "dependencies": {
+    "kleur": "^3.0.3",
     "mri": "^1.1.4",
     "tiny-glob": "^0.2.6"
   }

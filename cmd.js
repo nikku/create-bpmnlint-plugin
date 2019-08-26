@@ -2,6 +2,8 @@
 
 const mri = require('mri');
 
+const { bold, magenta } = require('kleur');
+
 const glob = require('tiny-glob');
 
 const fs = require('fs');
@@ -55,7 +57,8 @@ async function run() {
     'package.json'
   ];
 
-  console.log(`Creating ${ pluginPath }`);
+  console.log(`Setting up your plug-in in ${ bold(pluginPath) }`);
+  console.log();
 
   for (const file of files) {
 
@@ -65,7 +68,7 @@ async function run() {
 
     const destPath = path.join(pluginPath, destFile);
 
-    console.log('Creating', destPath);
+    console.log('  Creating %s', magenta(destFile));
 
     const destDirectory = path.dirname(destPath);
 
@@ -83,14 +86,16 @@ async function run() {
 
   }
 
-  console.log(`Done.
+  console.log();
+  console.log(bold('Done.'));
 
+  console.log(`
 Now go ahead and try it out:
 
-  cd ${pluginPath}
+%s
+`, magenta(`  cd ${pluginPath}
   npm install
-  npm test
-` );
+  npm test`));
 
 }
 
