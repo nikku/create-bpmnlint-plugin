@@ -7,22 +7,33 @@ const glob = require('tiny-glob');
 const fs = require('fs');
 const path = require('path');
 
+const pkg = require('./package');
+
 const args = mri(process.argv.slice(2));
 
 if (args.help) {
-  console.log('Usage: create-bpmnlint-plugin name');
+  console.log('Usage: %s name [cwd]', pkg.name);
 
   process.exit(0);
 }
 
+if (args.version || args.v) {
+  console.log(pkg.version);
+
+  process.exit(0);
+}
+
+
+const cwd = args._[1] || process.cwd();
+
 const pluginName = args._[0];
 
 if (!pluginName) {
-  console.error('No plug-in name specified').
+  console.error('No plug-in name specified');
   process.exit(1);
 }
 
-const pluginPath = `bpmnlint-plugin-${pluginName}`;
+const pluginPath = path.join(cwd, `bpmnlint-plugin-${pluginName}`);
 
 if (fs.existsSync(pluginPath)) {
   console.error(`Folder ${pluginPath} already exists`);
