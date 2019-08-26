@@ -13,14 +13,19 @@ const pkg = require('./package');
 
 const config = {
   directoryTemplate: 'bpmnlint-plugin-${NAME}',
-  runCommand: 'npm test'
+  runCommand: 'npm test',
+  templateFiles: [
+    'README.md',
+    'package.json'
+  ]
 };
 
 async function run(config) {
 
   const {
     directoryTemplate,
-    runCommand
+    runCommand,
+    templateFiles
   } = config;
 
   const args = mri(process.argv.slice(2));
@@ -68,11 +73,6 @@ async function run(config) {
     dot: true
   });
 
-  const replaceFiles = [
-    'README.md',
-    'package.json'
-  ];
-
   for (const file of files) {
 
     const srcPath = path.join(boilerplatePath, file);
@@ -88,7 +88,7 @@ async function run(config) {
     // ensure destination directory exists
     fs.mkdirSync(destDirectory, { recursive: true });
 
-    if (replaceFiles.includes(file)) {
+    if (templateFiles && templateFiles.includes(file)) {
 
       const contents = fs.readFileSync(srcPath, 'utf8');
 
