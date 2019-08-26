@@ -11,38 +11,54 @@ const path = require('path');
 
 const pkg = require('./package');
 
-const args = mri(process.argv.slice(2));
+const config = {
+  directoryTemplate: 'bpmnlint-plugin-${PLUGIN_NAME}',
+  runCommand: 'npm test'
+};
 
-if (args.help) {
-  console.log('Usage: %s name [cwd]', pkg.name);
+async function run(config) {
 
-  process.exit(0);
-}
+  const {
+    directoryTemplate,
+    runCommand
+  } = config;
 
-if (args.version || args.v) {
-  console.log(pkg.version);
+  const args = mri(process.argv.slice(2));
 
-  process.exit(0);
-}
+  if (args.help) {
+    console.log('Usage: %s name [cwd]', pkg.name);
 
+    process.exit(0);
+  }
 
-const cwd = args._[1] || process.cwd();
+  if (args.version || args.v) {
+    console.log(pkg.version);
 
-const pluginName = args._[0];
+    process.exit(0);
+  }
 
-if (!pluginName) {
-  console.error('No plug-in name specified');
-  process.exit(1);
-}
+  const cwd = args._[1] || process.cwd();
 
-const pluginPath = path.join(cwd, `bpmnlint-plugin-${pluginName}`);
+  const pluginName = args._[0];
 
-if (fs.existsSync(pluginPath)) {
-  console.error(`Folder ${pluginPath} already exists`);
-  process.exit(1);
-}
+  if (!pluginName) {
+    console.error('No name specified');
+    process.exit(1);
+  }
 
-async function run() {
+  const targetPath = path.join(cwd, replaceTemplates(directoryTemplate));
+
+  function replaceTemplates(str) {
+    return str.replace(/\$\{PLUGIN_NAME\}/g, pluginName);
+  }
+
+  console.log(`Setting up in ${ bold(targetPath) }`);
+  console.log();
+
+  if (fs.existsSync(targetPath)) {
+    console.error(`Folder ${targetPath} already exists`);
+    process.exit(1);
+  }
 
   const boilerplatePath = path.join(__dirname, 'boilerplate');
 
@@ -57,16 +73,13 @@ async function run() {
     'package.json'
   ];
 
-  console.log(`Setting up in ${ bold(pluginPath) }`);
-  console.log();
-
   for (const file of files) {
 
     const srcPath = path.join(boilerplatePath, file);
 
     const destFile = file.endsWith('.tpl') ? file.substring(0, file.length - '.tpl'.length) : file;
 
-    const destPath = path.join(pluginPath, destFile);
+    const destPath = path.join(targetPath, destFile);
 
     console.log('  Creating %s', magenta(destFile));
 
@@ -79,7 +92,7 @@ async function run() {
 
       const contents = fs.readFileSync(srcPath, 'utf8');
 
-      fs.writeFileSync(destPath, contents.replace(/\$\{PLUGIN_NAME\}/g, pluginName), 'utf8');
+      fs.writeFileSync(destPath, replaceTemplates(contents), 'utf8');
     } else {
       fs.copyFileSync(srcPath, destPath);
     }
@@ -90,17 +103,17 @@ async function run() {
   console.log(bold('Done.'));
 
   console.log(`
-Now go ahead and try it out:
+Go ahead and try it out:
 
 %s
-`, magenta(`  cd ${pluginPath}
+`, magenta(`  cd ${targetPath}
   npm install
-  npm test`));
+  ${runCommand}`));
 
 }
 
 
-run().catch(err => {
+run(config).catch(err => {
   console.error(err);
   process.exit(1);
 });
