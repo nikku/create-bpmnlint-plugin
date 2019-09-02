@@ -6,6 +6,10 @@ All notable changes to [create-bpmnlint-plugin](https://github.com/nikku/create-
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.3.0
+
+* `FEAT`: generate example documentation
+
 ## 0.2.3
 
 * `FIX`: replacement of nested template files on Windows
