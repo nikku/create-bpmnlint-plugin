@@ -1,6 +1,6 @@
 {
   "name": "create-bpmnlint-plugin",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "The bpmnlint plug-in scaffolding utility",
   "bin": "./cmd.js",
   "scripts": {
