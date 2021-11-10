@@ -4,6 +4,7 @@
   "description": "The bpmnlint plug-in scaffolding utility",
   "bin": "./cmd.js",
   "scripts": {
+    "all": "npm test",
     "test": "node test.js"
   },
   "repository": {
