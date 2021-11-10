@@ -6,6 +6,10 @@ All notable changes to [create-bpmnlint-plugin](https://github.com/nikku/create-
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.4.1
+
+* `FEAT`: make boilerplate control published files via `package.json#files`
+
 ## 0.4.0
 
 * `FEAT`: update to bpmnlint@7
