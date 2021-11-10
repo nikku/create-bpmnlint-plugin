@@ -6,7 +6,11 @@ All notable changes to [create-bpmnlint-plugin](https://github.com/nikku/create-
 
 ___Note:__ Yet to be released changes appear here._
 
-## 0.4.1
+## 0.5.1
+
+* `FIX`: don't generate unnecessary `.npmignore` file
+
+## 0.5.0
 
 * `FEAT`: make boilerplate control published files via `package.json#files`
 
