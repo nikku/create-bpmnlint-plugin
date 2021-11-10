@@ -24,7 +24,6 @@
   },
   "files": [
     "boilerplate",
-    "!boilerplate/node_modules",
     "cmd.js"
   ]
 }
