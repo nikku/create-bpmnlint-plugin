@@ -6,6 +6,10 @@ All notable changes to [create-bpmnlint-plugin](https://github.com/nikku/create-
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.5.2
+
+* `FIX`: include all resources in bundle (again)
+
 ## 0.5.1
 
 * `FIX`: don't generate unnecessary `.npmignore` file
