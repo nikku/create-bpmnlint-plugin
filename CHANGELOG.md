@@ -6,6 +6,10 @@ All notable changes to [create-bpmnlint-plugin](https://github.com/nikku/create-
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.5.4
+
+* `CHORE`: add a test
+
 ## 0.5.3
 
 * `FIX`: replace in `package.json` (again)
