@@ -6,6 +6,10 @@ All notable changes to [create-bpmnlint-plugin](https://github.com/nikku/create-
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.4.0
+
+* `FEAT`: update to bpmnlint@7
+
 ## 0.3.0
 
 * `FEAT`: generate example documentation
