@@ -16,7 +16,7 @@ const config = {
   runCommand: 'npm test',
   templateFiles: [
     'README.md',
-    'package.json'
+    'package.json.tpl'
   ]
 };
 
