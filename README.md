@@ -5,7 +5,7 @@ The bpmnlint plug-in scaffolding utility.
 ## Usage
 
 ```
-npx create-bpmnlint-plugin my-plugin
+npm init bpmnlint-plugin my-plugin
 ```
 
 
