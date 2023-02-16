@@ -1,6 +1,7 @@
 # create-bpmnlint-plugin
 
-The bpmnlint plug-in scaffolding utility.
+A [bpmnlint](https://github.com/bpmn-io/bpmnlint) plug-in scaffolding utility.
+
 
 ## Usage
 
