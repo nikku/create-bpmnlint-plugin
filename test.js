@@ -47,7 +47,7 @@ try {
 
     const expectedPath = path.join(cwd, 'bpmnlint-plugin-test', expectedFile);
 
-    assert.equal(fs.existsSync(expectedPath), true);
+    assert.equal(fs.existsSync(expectedPath), true, `expected <${ expectedPath }> to exist`);
   }
 
   console.log();
@@ -59,7 +59,7 @@ try {
 
     const replacedPath = path.join(cwd, 'bpmnlint-plugin-test', replacedFile);
 
-    assert.equal(fs.readFileSync(replacedPath, 'utf-8').includes('bpmnlint-plugin-test'), true);
+    assert.equal(fs.readFileSync(replacedPath, 'utf-8').includes('bpmnlint-plugin-test'), true, `expected <${ replacedPath }> to include <bpmnlint-plugin-test>`);
   }
 
   console.log();
