@@ -6,6 +6,10 @@ All notable changes to [create-bpmnlint-plugin](https://github.com/nikku/create-
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.6.0
+
+* `DEPS`: update to `bpmnlint@8`
+
 ## 0.5.4
 
 * `CHORE`: add a test
