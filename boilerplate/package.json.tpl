@@ -12,12 +12,12 @@
     "plugin"
   ],
   "devDependencies": {
-    "bpmnlint": "^7.2.1",
+    "bpmnlint": "^8.3.2",
     "chai": "^4.2.0",
     "mocha": "^9.1.3"
   },
   "dependencies": {
-    "bpmnlint-utils": "^1.0.2"
+    "bpmnlint-utils": "^1.1.1"
   },
   "files": [
     "rules",
